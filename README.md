@@ -18,10 +18,11 @@ Infrastructure v1.0 gets the initial version of the app ready for testing. Every
 - Create a record set pointing `mtgtradingpost.com` to the EIP
 - Use Packer to build the monolith Amazon Machine Image (AMI):
 ```
+cd v1/packer
 packer build \
     -var 'aws_access_key=YOUR ACCESS KEY' \
     -var 'aws_secret_key=YOUR SECRET KEY' \
-    monolith.json
+    packer.json
 ```
 - Spin up an EC2 server with the created AMI
 - Modify the Security Group to allow SSH/22 inbound from your IP and HTTP/80 inbound from you IP and all of the tester IPs
