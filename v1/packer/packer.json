@@ -1,0 +1,23 @@
+{
+    "variables": {
+        "aws_access_key": "",
+        "aws_secret_key": "",
+        "aws_region": "us-west-2",
+        "aws_ami_image": "ami-02d0ea44ae3fe9561",
+        "aws_instance_type": "t2.micro"
+    },
+    "builders": [{
+        "type": "amazon-ebs",
+        "access_key": "{{user `aws_access_key`}}",
+        "secret_key": "{{user `aws_secret_key`}}",
+        "region": "{{user `aws_region`}}",
+        "source_ami": "{{user `aws_ami_image`}}",
+        "instance_type": "{{user `aws_instance_type`}}",
+        "ssh_username": "ubuntu",
+        "ami_name": "trading-app-{{timestamp}}"
+    }],
+    "provisioners": [{
+        "type": "shell",
+        "scripts": [ "./build.sh" ]
+    }]
+  }
