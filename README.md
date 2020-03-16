@@ -37,10 +37,14 @@ sudo service apache2 restart
 ## Infrastructure v2.0
 
 ### To-Do
+
 - Use AWS RDS for the backend
 - Use an auto-scaling group (ASG) for the front-end
 - Place an application load balancer (ALB) in front of the ASG
 - Create a record set pointing `mtgtradingpost.com` to the ALB
 - Automate creation of all infrastructure with Terraform
 
-###
+### Dependencies
+
+- Packer
+- Terraform
