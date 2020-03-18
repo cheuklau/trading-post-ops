@@ -10,7 +10,7 @@ Infrastructure v1.0 gets the initial version of the app ready for testing. Every
 
 - Packer
 
-### Build instructions
+### Build Instructions
 
 - Register an elastic IP (EIP) on AWS
 - Register AWS Route53 domain name `mtgtradingpost.com`
@@ -48,3 +48,20 @@ sudo service apache2 restart
 
 - Packer
 - Terraform
+- Terragrunt
+
+### Build Instructions
+
+- Export AWS secret and access keys as environment variables for Terragrunt to use:
+```
+export AWS_ACCESS_KEY_ID=<access key>
+export AWS_SECRET_ACCESS_KEY=<secret key>
+```
+- Deploy RDS
+```
+cd v2/terragrunt/dev/rds
+terragrunt plan --terragrunt-source-update
+terragrunt apply
+```
+Note: Running Terragrunt for the first time creates DynamoDB locking table and S3 bucket to store the Terraform state. It will also output the RDS endpoint which will be used by the Flask front-end.
+- Deploy ASG for Flask Front End

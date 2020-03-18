@@ -1,7 +1,7 @@
 terraform {
-    source = "git::ssh//git@github.com/cheuklau/trading-post-ops.git//v2/modules/rds"
+    source = "git::git@github.com:cheuklau/trading-post-modules.git//rds"
 }
 
 include {
-    path = "${find_int_parent_folders()}"
+    path = find_in_parent_folders()
 }
