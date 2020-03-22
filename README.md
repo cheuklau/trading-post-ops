@@ -16,13 +16,15 @@ Infrastructure v1.0 gets the initial version of the app ready for testing. Every
 - Register AWS Route53 domain name `mtgtradingpost.com`
 - A hosted zone is automatically created for `mtgtradingpost.com`
 - Create a record set pointing `mtgtradingpost.com` to the EIP
+- Export AWS secret and access keys as environment variables for Terragrunt to use:
+```
+export AWS_ACCESS_KEY_ID=<access key>
+export AWS_SECRET_ACCESS_KEY=<secret key>
+```
 - Use Packer to build the monolith Amazon Machine Image (AMI):
 ```
 cd v1/packer
-packer build \
-    -var 'aws_access_key=YOUR ACCESS KEY' \
-    -var 'aws_secret_key=YOUR SECRET KEY' \
-    packer.json
+packer build packer.json
 ```
 - Spin up an EC2 server with the created AMI
 - Modify the Security Group to allow SSH/22 inbound from your IP and HTTP/80 inbound from you IP and all of the tester IPs
@@ -36,14 +38,6 @@ sudo service apache2 restart
 
 ## Infrastructure v2.0
 
-### To-Do
-
-- Use AWS RDS for the backend
-- Use an auto-scaling group (ASG) for the front-end
-- Place an application load balancer (ALB) in front of the ASG
-- Create a record set pointing `mtgtradingpost.com` to the ALB
-- Automate creation of all infrastructure with Terraform
-
 ### Dependencies
 
 - Packer
@@ -56,6 +50,11 @@ sudo service apache2 restart
 ```
 export AWS_ACCESS_KEY_ID=<access key>
 export AWS_SECRET_ACCESS_KEY=<secret key>
+```
+- Use Packer to build the monolith Amazon Machine Image (AMI):
+```
+cd v2/packer
+packer build packer.json
 ```
 - Deploy RDS
 ```

@@ -12,4 +12,5 @@ inputs = {
   max_size       = 1
   server_port    = 80
   elb_port       = 80 # Update later to HTTPS/443 with ACM
+  hosted_zone_id = "Z3KIODODXJIPVV" # Hosted zone created by Route53 registrar
 }
