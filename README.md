@@ -59,8 +59,11 @@ packer build packer.json
 - Deploy RDS
 ```
 cd v2/terragrunt/dev/rds
-terragrunt plan --terragrunt-source-update
-terragrunt apply
+terragrunt apply --terragrunt-source-update
 ```
 Note: Running Terragrunt for the first time creates DynamoDB locking table and S3 bucket to store the Terraform state. It will also output the RDS endpoint which will be used by the Flask front-end.
 - Deploy ASG for Flask Front End
+```
+cd v2/terragrunt/dev/asg
+terragrunt apply --terragrunt-source-update
+```
