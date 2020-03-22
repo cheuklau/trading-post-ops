@@ -51,7 +51,7 @@ sudo service apache2 restart
 export AWS_ACCESS_KEY_ID=<access key>
 export AWS_SECRET_ACCESS_KEY=<secret key>
 ```
-- Use Packer to build the monolith Amazon Machine Image (AMI):
+- Use Packer to build the front-end AMI:
 ```
 cd v2/packer
 packer build packer.json
