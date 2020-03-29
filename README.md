@@ -56,6 +56,7 @@ export AWS_SECRET_ACCESS_KEY=<secret key>
 cd v2/packer
 packer build packer.json
 ```
+Note: CircleCI is already set up to deploy the AMI with every change to the application [repo](https://github.com/cheuklau/trading-post).
 - Deploy RDS
 ```
 cd v2/terragrunt/dev/rds
