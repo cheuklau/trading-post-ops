@@ -40,7 +40,7 @@ sudo cp flaskapp.wsgi /var/www/FlaskApp/flaskapp.wsgi
 sudo rm /etc/apache2/sites-enabled/000-default.conf
 
 # Update init.py
-sudo sed -i "s/app.run(host='0.0.0.0.xip.io', port=5000)/app.run(threaded=True)/g" __init__.py
+sudo sed -i "s/APP.run(host='0.0.0.0.xip.io', port=5000)/app.run(threaded=True)/g" __init__.py
 sudo sed -i "s/http:\/\/0.0.0.0.xip.io:5000\//http:\/\/http:\/\/mtgtradingpost.com/g" __init__.py
 
 # Commands to start the service
