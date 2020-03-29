@@ -41,7 +41,7 @@ sudo rm /etc/apache2/sites-enabled/000-default.conf
 
 # Update init.py
 sudo sed -i "s/APP.run(host='0.0.0.0.xip.io', port=5000)/APP.run(threaded=True)/g" __init__.py
-sudo sed -i "s/http:\/\/0.0.0.0.xip.io:5000\//http:\/\/http:\/\/mtgtradingpost.com/g" __init__.py
+sudo sed -i "s/http:\/\/0.0.0.0.xip.io:5000\//http:\/\/mtgtradingpost.com/g" __init__.py
 
 # Commands to start the service
 # Note: For reference only since this should be done at launch.
