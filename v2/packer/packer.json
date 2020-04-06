@@ -14,7 +14,10 @@
         "source_ami": "{{user `aws_ami_image`}}",
         "instance_type": "{{user `aws_instance_type`}}",
         "ssh_username": "ubuntu",
-        "ami_name": "trading-app-v2-{{timestamp}}"
+        "ami_name": "trading-app-v2-{{timestamp}}",
+        "tags": {
+            "app": "trading-post"
+        }
     }],
     "provisioners": [{
         "type": "shell",

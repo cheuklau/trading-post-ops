@@ -74,3 +74,20 @@ cd v2/terragrunt/dev/harness
 terragrunt apply --terragrunt-source-update
 ```
 Note: Harness Delegate is required to interface with the Harness manager for continuous deployment of application changes.
+
+## Harness Setup
+
+Harness is used for continuous deployment of application changes.
+
+### Shared Resources
+
+- Cloud Provider defines AWS accounts containing the Harness Delegate
+
+### Application
+
+- Service
+    + Name: `trading-post`
+    + Deployment type: AWS AMI
+    + Artifact:
+        * Cloud Provider: `trading-post`
+        * AWS Tags: `app:trading-post`
