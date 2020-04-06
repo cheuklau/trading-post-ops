@@ -68,3 +68,9 @@ Note: Running Terragrunt for the first time creates DynamoDB locking table and S
 cd v2/terragrunt/dev/asg
 terragrunt apply --terragrunt-source-update
 ```
+- Deploy [Harness](https://harness.io) Delegate
+```
+cd v2/terragrunt/dev/harness
+terragrunt apply --terragrunt-source-update
+```
+Note: Harness Delegate is required to interface with the Harness manager for continuous deployment of application changes.
