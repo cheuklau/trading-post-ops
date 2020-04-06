@@ -81,7 +81,9 @@ Harness is used for continuous deployment of application changes.
 
 ### Shared Resources
 
-- Cloud Provider defines AWS accounts containing the Harness Delegate
+- Cloud Provider
+    + Name: `trading-post`
+    + AWS credentials to access account with Harness Delegate installed
 
 ### Application
 
@@ -91,3 +93,40 @@ Harness is used for continuous deployment of application changes.
     + Artifact:
         * Cloud Provider: `trading-post`
         * AWS Tags: `app:trading-post`
+    + User Data to start service requires RDS endpoint
+- Environment
+    + Name: `trading-post`
+    + Cloud Provider Type: AWS
+    + Deployment Type: AMI
+    + Use already provisioned infrastructure
+    + Cloud Provider: `trading-post`
+    + Auto-scaling Group: auto-populated by Terragrunt `asg` deploy
+    + Class Load Balancers: auto-populated by Terragrunt `asg` deploy
+    + Scope to `trading-post` Service
+- Workflow
+    + Name: `trading-post canary deploy`
+    + Workflow Type: `Canary`
+    + Environment: `trading-post`
+    + Predeployment Steps:
+        * Email
+    + Phase 1:
+        * AWS AutoScaling Group Setup (2 target instances)
+        * Upgrade AutoScaling Group (50% upgrade)
+        * Manual approval
+    + Phase 2:
+        * Upgrade AutoScaling Group (100% upgrade)
+        * Manual approval
+- Workflow
+    + Name: `trading-post collect artifact`
+    + Workflow Type: `Build Workflow`
+    + Artifact Collection
+        * Use Artifact defined in Service
+- Pipeline
+    + Name: `trading-post canary pipeline`
+    + Pipeline Stages
+        * `trading-post collect artifact`
+        * `trading-post canary deploy`
+- Trigger
+    + Type: On new artifact
+    + Artifact defined in Service
+    + Execute `trading-post canary pipeline`
