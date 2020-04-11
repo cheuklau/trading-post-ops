@@ -7,7 +7,7 @@ include {
 }
 
 inputs = {
-  instance_type  = "t2.micro"
+  instance_type  = "t2.medium"
   min_size       = 1
   max_size       = 1
   server_port    = 80
