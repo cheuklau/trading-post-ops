@@ -79,7 +79,7 @@ Note: Harness Delegate is required to interface with the Harness manager for con
 cd v2/terragrunt/dev/elk
 terragrunt apply --terragrunt-source-update
 ```
-Note: Apache logs from the frontend will be picked up by Filebeat and sent to Logstash which will send the even in JSON format to be stored in Elasticsearch. Kibana will read the events in Elasticsearch to create dashboards and queries.
+Note: Apache logs from the frontend will be picked up by Filebeat and sent to Logstash which parse the event and send it to Elasticsearch. Kibana will read the events in Elasticsearch to create dashboards and run user queries.
 
 ## Harness Setup
 
